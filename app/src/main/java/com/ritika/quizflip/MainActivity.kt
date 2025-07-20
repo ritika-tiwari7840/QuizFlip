@@ -14,19 +14,26 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.ritika.quizflip.databinding.ActivityMainBinding
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.ViewModelProvider
+import com.ritika.quizflip.data.SharedViewModel
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var viewModel: SharedViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
+
+
+        // Initialize ViewModel and prefs here
+        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+        viewModel.initPrefs(this)
 
         val navView: NavigationView = binding.navView
         val headerView = navView.getHeaderView(0)

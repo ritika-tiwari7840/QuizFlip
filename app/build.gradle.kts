@@ -58,4 +58,6 @@ dependencies {
     testImplementation ("junit:junit:4.13.2")
     androidTestImplementation (libs.androidx.junit.v115)
     androidTestImplementation(libs.androidx.espresso.core.v351)
+    implementation("com.google.code.gson:gson:2.10.1")
+
 }
